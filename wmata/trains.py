@@ -36,7 +36,6 @@ def get_trains(STATION_CODE = STATION_CODE, line_filter = 'SV'):
     # filter for silver line trains
     if line_filter != 'any': 
         trains = [t for t in trains if t["Line"] == line_filter] # Silver line only 
-        print(trains)
     else: 
         trains = trains[:3] # next three trains 
     return trains 
