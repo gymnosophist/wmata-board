@@ -1,13 +1,13 @@
 from config import STATION_CODE, WMATA_API_KEY 
-
+from .trains import get_trains
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics 
 import os 
 import time 
 
 BASE_DIR=os.path.expanduser('~/Projects/wmata-led-board')
-FONT_PATH=os.path.join(BASE_DIR, 'lib/rgbmatrix/fonts/5x8.bdf')
+FONT_PATH=os.path.join(BASE_DIR, 'lib/rgbmatrix/fonts/4x6.bdf')
 
-
+trains = get_trains()
 
 # matrix configuration 
 def setup_matrix(rows=32, cols=64, chain_length=1, parallel=1): 
@@ -24,7 +24,12 @@ def setup_matrix(rows=32, cols=64, chain_length=1, parallel=1):
     options.chain_length = chain_length 
     options.parallel = parallel 
     options.hardware_mapping = 'adafruit-hat' #using the adafruit hat for this project; could set to 'regular' 
+    options.gpio_slowdown = 4  # Working with Raspberry Pi 4
+    options.brightness = 75
+
     return RGBMatrix(options = options)
+
+
 
 def render_trains(trains: dict):
     """
@@ -48,8 +53,11 @@ def render_trains(trains: dict):
         car = train['Car']
         dest = train['Destination']
         mins = train['Min']
+        # format the text 
 
-        text = f"{line:<2} {car:<1} {dest:<6} {mins:>2}"
+        # text = f"{line:<2} {car:<1} {dest:<6} {mins:>2}" we'll leave the car argument out for now 
+        text = f"{line} {dest}".ljust(10) + f"{mins}".rjust(2)
+
         graphics.DrawText(canvas, font, 1, y_offset, textColor, text[:11])  # Clip to ~11 chars
         y_offset += 10
 
