@@ -1,5 +1,5 @@
 from config import STATION_CODE, WMATA_API_KEY 
-from .trains import get_trains
+from trains import get_trains
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics 
 import os 
 import time 
