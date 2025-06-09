@@ -58,7 +58,7 @@ def render_trains(trains: dict):
         # text = f"{line:<2} {car:<1} {dest:<6} {mins:>2}" we'll leave the car argument out for now 
         text = f"{line} {dest}".ljust(10) + f"{mins}".rjust(2)
 
-        graphics.DrawText(canvas, font, 1, y_offset, textColor, text[:11])  # Clip to ~11 chars
+        graphics.DrawText(canvas, font, 1, y_offset, textColor, text[:13])  # Clip to ~11 chars
         y_offset += 10
 
     matrix.SwapOnVSync(canvas)
