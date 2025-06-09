@@ -54,5 +54,13 @@ def render_trains(trains: dict):
 
     matrix.SwapOnVSync(canvas)
 
+    # keep the image on screen 
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        pass
+
+
 
 
