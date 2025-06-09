@@ -2,6 +2,7 @@ from config import STATION_CODE, WMATA_API_KEY
 
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics 
 import os 
+import time 
 
 BASE_DIR=os.path.expanduser('~/Projects/wmata-led-board')
 FONT_PATH=os.path.join(BASE_DIR, 'lib/rgbmatrix/fonts/5x8.bdf')
