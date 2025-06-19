@@ -42,7 +42,7 @@ def main():
     else:
         print('error getting trains')
     #change this to render trains 
-    # display_trains(trains)
+    render_trains(trains)
 
     
 if __name__ == "__main__":
