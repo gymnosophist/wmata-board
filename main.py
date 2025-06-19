@@ -1,5 +1,6 @@
-from wmata.trains import get_trains, display_trains 
 from wmata.config import WMATA_API_KEY, STATION_CODE
+from wmata.render import render_trains 
+from wmata.trains import get_trains #, display_trains 
 import os 
 import requests
 import argparse 
@@ -40,7 +41,9 @@ def main():
         print('got trains')
     else:
         print('error getting trains')
-    display_trains(trains)
+    #change this to render trains 
+    # display_trains(trains)
+
     
 if __name__ == "__main__":
     main()
