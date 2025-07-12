@@ -1,5 +1,5 @@
-from config import STATION_CODE, WMATA_API_KEY 
-from trains import get_trains
+from wmata.config import STATION_CODE, WMATA_API_KEY 
+from wmata.trains import get_trains
 from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics 
 import os 
 import time 
@@ -78,7 +78,7 @@ def render_trains(trains: dict):
             for dy in range(block_y):
                 canvas.SetPixel(dx, y_offset - block_y + dy, color.red, color.green, color.blue)
         # draw destination and minutes 
-        graphics.DrawText(canvas, font, 10, y_offset, yellow, f"{dest} {mins}")
+        graphics.DrawText(canvas, font, 10, y_offset, yellow, f"{dest[:8]} {mins}")
     # keep the image on screen 
     matrix.SwapOnVSync(canvas) 
     try:
