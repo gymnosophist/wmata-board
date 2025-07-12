@@ -56,29 +56,29 @@ def render_trains(trains: dict):
     # load font 
     font = graphics.Font() 
     font.LoadFont(FONT_PATH)  # update path as needed
-    textColor = graphics.Color(255, 255, 0)  # Yellow-ish text to start 
-
-    y_offset = 10 # starting y position 
+    textColor = graphics.Color(255, 255, 0)  # Yellow-ish text to start
+    red = graphics.Color(255, 0, 0)
+    yellow = graphics.Color(255, 255, 0)
 
     canvas.Clear() 
 
-    # render some train data 
-    for train in trains[:3]: # limit to three trains for now 
-        line = train['Line']
-        car = train['Car']
-        dest = train['Destination']
-        mins = train['Min']
-        # format the text 
+    # render train data 
+    for i, train in enumerate(trains):
+        # define y offset -- how much space there is between lines 
+        y_offset = 8 + (i + 1) * 8 
+        line = train["Line"]
+        dest = (train["Destination"] or "").ljust(8)[:8]
+        mins = (train["Min"] or "").rjust(3)
 
-        # text = f"{line:<2} {car:<1} {dest:<6} {mins:>2}" we'll leave the car argument out for now 
-        text = f"{line} {dest[:7]} {car}".ljust(10) + f"{mins}".rjust(2)
-
-        graphics.DrawText(canvas, font, 1, y_offset, textColor, text[:13])  # Clip to ~11 chars
-        y_offset += 10
-
-    matrix.SwapOnVSync(canvas)
-
+        # draw color block to indicate line 
+        color = LINE_COLORS.get(line, grapics.Color(255,255,255)) # get color from dictionary unless not found, in which case return white 
+        for dx in range(2):
+            for dy in range(5):
+                canvas.SetPixel(dx, y_offset - 5 + dy, color.red, color.green, color.blue)
+        # draw destination and minutes 
+        graphics.Drawtext(canvas, font, 10, y_offset, yellow, f"{dest} {mins}")
     # keep the image on screen 
+    matrix.SwapOnVSync(canvas) 
     try:
         while True:
             time.sleep(1)
