@@ -62,6 +62,10 @@ def render_trains(trains: dict):
 
     canvas.Clear() 
 
+    # Render the HEADER 
+    header_text = "LN     DEST     MIN"
+    graphics.DrawText(canvas, font, 10, 7, header_text)
+    
     # render train data 
     for i, train in enumerate(trains):
         # define y offset -- how much space there is between lines 
