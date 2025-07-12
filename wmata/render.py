@@ -66,11 +66,15 @@ def render_trains(trains: dict):
     header_text = "LN     DEST     MIN"
     graphics.DrawText(canvas, font, 10, 7, header_text)
     
+    
+    
     # render train data 
     for i, train in enumerate(trains):
         # define y offset -- how much space there is between lines 
         y_offset = 8 + (i + 1) * 8 
         line = train["Line"]
+        # add a line for car? 
+        car = (train["Car"] or "").center(1)
         dest = (train["Destination"] or "").ljust(8)[:8]
         mins = (train["Min"] or "").rjust(3)
 
@@ -82,7 +86,7 @@ def render_trains(trains: dict):
             for dy in range(block_y):
                 canvas.SetPixel(dx, y_offset - block_y + dy, color.red, color.green, color.blue)
         # draw destination and minutes 
-        graphics.DrawText(canvas, font, 10, y_offset, red, f"{dest[:8]} {mins}")
+        graphics.DrawText(canvas, font, 10, y_offset, red, f"{dest[:8]} {car} {mins}")
     # keep the image on screen 
     matrix.SwapOnVSync(canvas) 
     try:
