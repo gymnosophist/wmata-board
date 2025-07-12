@@ -56,7 +56,7 @@ def render_trains(trains: dict):
     # load font 
     font = graphics.Font() 
     font.LoadFont(FONT_PATH)  # update path as needed
-    textColor = graphics.Color(255, 255, 0)  # Yellow-ish text to start
+    textColor = graphics.Color(255, 0, 0)  # Yellow-ish text to start
     red = graphics.Color(255, 0, 0)
     yellow = graphics.Color(255, 255, 0)
 
@@ -78,7 +78,7 @@ def render_trains(trains: dict):
             for dy in range(block_y):
                 canvas.SetPixel(dx, y_offset - block_y + dy, color.red, color.green, color.blue)
         # draw destination and minutes 
-        graphics.DrawText(canvas, font, 10, y_offset, yellow, f"{dest[:8]} {mins}")
+        graphics.DrawText(canvas, font, 10, y_offset, red, f"{dest[:8]} {mins}")
     # keep the image on screen 
     matrix.SwapOnVSync(canvas) 
     try:
