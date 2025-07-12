@@ -22,7 +22,7 @@ draw = ImageDraw.Draw(image)
 font = ImageFont.load_default()
 
 # Draw some text
-draw.text((2, 10), "Hello Metro!", fill=(0, 255, 0), font=font)
+draw.text((1, 10), "Hello Metro!", fill=(0, 255, 0), font=font)
 
 # Display the image
 matrix.SetImage(image)
