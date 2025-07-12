@@ -9,6 +9,9 @@ FONT_PATH=os.path.join(BASE_DIR, 'lib/rgbmatrix/fonts/4x6.bdf')
 
 trains = get_trains()
 
+
+
+
 # matrix configuration 
 def setup_matrix(rows=32, cols=64, chain_length=1, parallel=1): 
     """
@@ -37,6 +40,18 @@ def render_trains(trains: dict):
     """
     matrix = setup_matrix()
     canvas = matrix.CreateFrameCanvas() 
+
+    # define a dictionary of line colors 
+
+    LINE_COLORS = {
+    "SV": graphics.Color(192, 192, 192),  # Silver
+    "BL": graphics.Color(0, 0, 255),      # Blue
+    "OR": graphics.Color(255, 140, 0),    # Orange
+    "YL": graphics.Color(255, 255, 0),    # Yellow
+    "GR": graphics.Color(0, 255, 0),      # Green
+    "RD": graphics.Color(255, 0, 0),      # Red
+    }
+
 
     # load font 
     font = graphics.Font() 
