@@ -24,7 +24,7 @@ def main():
 
     parser.add_argument(
         "-t", "--test",
-        action="store_true"
+        action="store_true",
         help = "Print train data to console without rendering"
 
     )
