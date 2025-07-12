@@ -71,12 +71,14 @@ def render_trains(trains: dict):
         mins = (train["Min"] or "").rjust(3)
 
         # draw color block to indicate line 
-        color = LINE_COLORS.get(line, grapics.Color(255,255,255)) # get color from dictionary unless not found, in which case return white 
-        for dx in range(2):
-            for dy in range(5):
-                canvas.SetPixel(dx, y_offset - 5 + dy, color.red, color.green, color.blue)
+        color = LINE_COLORS.get(line, graphics.Color(255,255,255)) # get color from dictionary unless not found, in which case return white 
+        block_x = 2 
+        block_y = 6
+        for dx in range(block_x):
+            for dy in range(block_y):
+                canvas.SetPixel(dx, y_offset - block_y + dy, color.red, color.green, color.blue)
         # draw destination and minutes 
-        graphics.Drawtext(canvas, font, 10, y_offset, yellow, f"{dest} {mins}")
+        graphics.DrawText(canvas, font, 10, y_offset, yellow, f"{dest} {mins}")
     # keep the image on screen 
     matrix.SwapOnVSync(canvas) 
     try:
