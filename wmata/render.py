@@ -63,8 +63,8 @@ def render_trains(trains: dict):
     canvas.Clear() 
 
     # Render the HEADER 
-    header_text = "LN     DEST     MIN"
-    graphics.DrawText(canvas, font, 10, 7, header_text)
+    header_text = "LN CAR DEST MIN"
+    graphics.DrawText(canvas, font, 0, 7, header_text)
     
     
     
@@ -74,7 +74,7 @@ def render_trains(trains: dict):
         y_offset = 8 + (i + 1) * 8 
         line = train["Line"]
         # add a line for car? 
-        car = (train["Car"] or "").center(1)
+        car = (train["Car"] or "").center(2)
         dest = (train["Destination"] or "").ljust(8)[:8]
         mins = (train["Min"] or "").rjust(3)
 
