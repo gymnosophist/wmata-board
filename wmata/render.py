@@ -64,7 +64,7 @@ def render_trains(trains: dict):
 
     # Render the HEADER 
     header_text = "LN CAR DEST MIN"
-    graphics.DrawText(canvas, font, 0, 7, header_text)
+    graphics.DrawText(canvas, font, 0, 7, red, header_text)
     
     
     
